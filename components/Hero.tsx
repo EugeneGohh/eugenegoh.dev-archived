@@ -31,27 +31,54 @@ function Hero() {
           </h1>
           <p className="mb-8 leading-relaxed">
             I love writing{" "}
-            <RoughNotation type="highlight" show={true} color="#a9d6e5">
+            <RoughNotation
+              type="highlight"
+              color="#a9d6e5"
+              show={true}
+              multiline={true}
+              padding={[0, 5]}
+              iterations={1}
+              animationDuration={1500}
+            >
               TypeScript/JavaScript, Next.js, Redux, GraphQL, Node.js, MongoDB,
               and PostgreSQL.
             </RoughNotation>
             <br className="hidden lg:inline-block" />I enjoy giving back to
-            society by contributing to{" "}
+            society by{" "}
             <RoughNotationGroup show={true}>
               <RoughNotation
                 type="highlight"
                 color="#a9d6e5"
+                multiline={true}
+                padding={[0, 3]}
+                iterations={1}
                 animationDuration={1500}
               >
-                open source repositories on GitHub, writing blogs &
-              </RoughNotation>
+                contributing to open source repositories{" "}
+              </RoughNotation>{" "}
+              on GitHub,{" "}
               <RoughNotation
                 type="highlight"
                 color="#a9d6e5"
+                multiline={true}
+                padding={[0, 2]}
+                iterations={1}
                 animationDuration={1500}
               >
-                organizing events on Codecademy Community{" "}
-              </RoughNotation>
+                writing blogs{" "}
+              </RoughNotation>{" "}
+              &
+              <RoughNotation
+                type="highlight"
+                color="#a9d6e5"
+                multiline={true}
+                padding={[0, 2]}
+                iterations={1}
+                animationDuration={1500}
+              >
+                organizing events{" "}
+              </RoughNotation>{" "}
+              on Codecademy Community
             </RoughNotationGroup>
             sharing what I have learned. I'm also one of the early contributors
             behind Codecademy Docs.
