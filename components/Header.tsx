@@ -1,5 +1,6 @@
 import React from "react";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 function Header() {
   const { theme, setTheme } = useTheme();
@@ -7,30 +8,35 @@ function Header() {
   return (
     <header className="text-gray-600 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 dark:text-white">
+        <div className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 dark:text-white">
           <span className="ml-3 text-xl">Eugene Goh</span>
-        </a>
+        </div>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center dark:text-white">
-          <a
-            className="mr-5 hover:text-gray-900"
-            href="https://eugenegoh.hashnode.dev/"
-          >
-            Blog
-          </a>
+          <Link href="https://eugenegoh.hashnode.dev/">
+            <a className="mr-5 hover:text-gray-900">Blog</a>
+          </Link>
 
-          <a
-            className="mr-5 hover:text-gray-900"
-            href="https://twitter.com/_eugenegoh"
-          >
-            Twitter
-          </a>
-          <a
-            className="mr-5 hover:text-gray-900"
-            href="https://github.com/EugeneGohh"
-          >
-            GitHub
-          </a>
+          <Link href="https://twitter.com/_eugenegoh">
+            <a
+              className="mr-5 hover:text-gray-900"
+              target="_blank"
+              rel="noopener"
+            >
+              Twitter
+            </a>
+          </Link>
+
+          <Link href="https://github.com/EugeneGohh">
+            <a
+              className="mr-5 hover:text-gray-900"
+              target="_blank"
+              rel="noopener"
+            >
+              GitHub
+            </a>
+          </Link>
         </nav>
+
         <button
           className="inline-flex items-center bg-gray-100 border-3 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
           type="button"

@@ -7,16 +7,28 @@ import BlogSection from "../components/BlogSection";
 import ProjectSection from "../components/ProjectSection";
 import Footer from "../components/Footer";
 
+import Head from "next/head";
+
 const Home: NextPage = () => {
   return (
     <div>
-      <Header />
-      <Hero />
-      <BlogSection />
-      <ProjectSection />
+      <Head>
+        <title>Eugene Goh</title>
+        <meta name="description" content="Eugene Goh Next App" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-      <Divider variant="middle" />
-      <Footer />
+      <main>
+        <Header />
+        <Hero />
+        <BlogSection />
+        <ProjectSection />
+      </main>
+
+      <footer>
+        <Divider variant="middle" />
+        <Footer />
+      </footer>
     </div>
   );
 };

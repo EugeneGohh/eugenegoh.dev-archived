@@ -1,7 +1,14 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "https://api.hashnode.com/",
+  ssrMode: true,
+  link: createHttpLink({
+    uri: "https://api.hashnode.com/",
+    credentials: "same-origin",
+    headers: {
+      Authorization: process.env.HASHNODE_AUTH,
+    },
+  }),
   cache: new InMemoryCache(),
 });
 
