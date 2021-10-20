@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Divider from "@mui/material/Divider";
 
 import Header from "../components/Header";
 import Hero from "../components/Hero";
@@ -26,7 +25,6 @@ const Home: NextPage = () => {
       </main>
 
       <footer>
-        <Divider variant="middle" />
         <Footer />
       </footer>
     </div>
