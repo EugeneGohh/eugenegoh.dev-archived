@@ -28,6 +28,7 @@ const GET_BLOGS = gql`
 function BlogSection() {
   const { data, loading, error } = useQuery(GET_BLOGS, {
     variables: { username: "eugenegoh" },
+    context: { clientName: "endpoint1" },
     ssr: true,
   });
 
@@ -41,7 +42,7 @@ function BlogSection() {
 
   if (error) {
     return (
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ display: "flex", justifyContent: "center" }} m={3}>
         <Stack sx={{ width: "70%" }} spacing={2}>
           <Alert severity="error">
             <AlertTitle>{`${error}`}</AlertTitle>
@@ -53,8 +54,8 @@ function BlogSection() {
   }
 
   return (
-    <div className="container px-5 py-20 mx-auto">
-      <div className="flex flex-wrap w-full mb-20">
+    <div className="container px-5 py-5 mx-auto">
+      <div className="flex flex-wrap w-full mb-8">
         <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white">
             Recent blogs
@@ -89,12 +90,11 @@ function BlogSection() {
               <div className="flex flex-wrap -m-4">
                 <div className="p-4 md:w-1/3">
                   <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                    <Image
+                    {/* Unoptimized image */}
+                    <img
                       className="lg:h-48 md:h-36 w-full object-cover object-center"
                       src={blog.coverImage}
                       alt="Picture of the author"
-                      width={720}
-                      height={400}
                     />
                     <div className="p-6">
                       <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
