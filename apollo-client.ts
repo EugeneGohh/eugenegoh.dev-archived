@@ -10,8 +10,6 @@ const endpoint1 = new HttpLink({
   uri: "https://api.hashnode.com/",
 });
 
-console.log(process.env.GITHUB_ACCESS_TOKEN);
-
 const endpoint2 = new HttpLink({
   uri: "https://api.github.com/graphql",
 });
