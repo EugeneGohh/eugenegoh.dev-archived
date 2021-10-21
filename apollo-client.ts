@@ -4,26 +4,32 @@ import {
   ApolloLink,
   HttpLink,
 } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
 const endpoint1 = new HttpLink({
   uri: "https://api.hashnode.com/",
-  headers: {
-    Authorization: `${process.env.HASHNODE_AUTH}`,
-  },
 });
+
+console.log(process.env.GITHUB_ACCESS_TOKEN);
 
 const endpoint2 = new HttpLink({
   uri: "https://api.github.com/graphql",
-  headers: {
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_ACCESS_TOKEN}`,
-  },
 });
+
+const authLink = setContext((_, { headers }) => {
+  return {
+    headers: {
+      ...headers,
+      authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
+    },
+  };
+}).concat(endpoint2);
 
 const client = new ApolloClient({
   ssrMode: true,
   link: ApolloLink.split(
-    (operation) => operation.getContext().clientName === "endpoint2",
-    endpoint2,
+    (operation) => operation.getContext().clientName === "authLink",
+    authLink,
     endpoint1
   ),
   cache: new InMemoryCache(),

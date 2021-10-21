@@ -39,7 +39,7 @@ function ProjectSection() {
       },
       isFork: false,
     },
-    context: { clientName: "endpoint2" },
+    context: { clientName: "authLink" },
     ssr: true,
   });
 
