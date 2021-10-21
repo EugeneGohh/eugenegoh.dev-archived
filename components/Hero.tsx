@@ -67,18 +67,19 @@ function Hero() {
               >
                 writing blogs{" "}
               </RoughNotation>{" "}
-              &
+              &{" "}
               <RoughNotation
                 type="highlight"
                 color="#a9d6e5"
                 multiline={true}
-                padding={[0, 2]}
+                padding={[5, 10]}
                 iterations={1}
+                strokeWidth={5}
                 animationDuration={1500}
               >
                 organizing events{" "}
               </RoughNotation>{" "}
-              on Codecademy Community
+              on Codecademy Community{" "}
             </RoughNotationGroup>
             sharing what I have learned. I'm also one of the early contributors
             behind Codecademy Docs.
