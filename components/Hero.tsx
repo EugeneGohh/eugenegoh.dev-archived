@@ -72,7 +72,7 @@ function Hero() {
                 type="highlight"
                 color="#a9d6e5"
                 multiline={true}
-                padding={[5, 10]}
+                padding={[0, 8, 0, 0]}
                 iterations={1}
                 strokeWidth={5}
                 animationDuration={1500}
