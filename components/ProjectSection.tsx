@@ -89,7 +89,7 @@ function ProjectSection() {
                       {project.name}
                     </h1>
                     <p className="leading-relaxed mb-3 dark:text-white">
-                      {project.description}.
+                      {project.description}
                     </p>
                     <div className="flex items-center flex-wrap ">
                       <Link href={project.url}>
