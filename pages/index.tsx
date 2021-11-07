@@ -5,6 +5,8 @@ import Hero from "../components/Hero";
 import BlogSection from "../components/BlogSection";
 import ProjectSection from "../components/ProjectSection";
 import Footer from "../components/Footer";
+import { ColorModeScript } from "@chakra-ui/react";
+import theme from "../theme";
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +18,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <Header />
         <Hero />
         <BlogSection />
