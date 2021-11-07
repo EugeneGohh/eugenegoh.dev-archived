@@ -1,27 +1,54 @@
 import React from "react";
-import Link from "next/link";
-import Divider from "@mui/material/Divider";
+import {
+  Box,
+  Container,
+  Divider,
+  Link,
+  Heading,
+  SimpleGrid,
+  Stack,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
 function Footer() {
   return (
-    <footer className="text-gray-600 body-font">
-      <Divider variant="middle" />
+    <Box
+      bg={useColorModeValue("gray.50", "gray.900")}
+      color={useColorModeValue("gray.700", "gray.200")}
+    >
+      <Container as={Stack} maxW={"6xl"} py={12}>
+        <SimpleGrid
+          templateColumns={{ sm: "1fr 1fr", md: "65fr 1fr 1fr 1fr 1fr" }}
+          spacing={8}
+        >
+          <Stack spacing={3}>
+            <Box>
+              <Heading mb={2}>Get In Touch</Heading>
+            </Box>
+            <Divider size="sm" />
+            <Text fontSize={"sm"}>
+              Designed and Built by <b>Eugene Goh</b>
+            </Text>
+          </Stack>
 
-      <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-        <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4 dark:text-white">
-          © 2021 Eugene Goh —
-          <Link href="https://twitter.com/_eugenegoh">
-            <a
-              className="text-gray-600 ml-1 dark:text-white"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              @eugenegoh
-            </a>
-          </Link>
-        </p>
-      </div>
-    </footer>
+          <Stack align={"flex-start"}>
+            <Link href={"https://twitter.com/_eugenegoh"} isExternal>
+              Twitter
+            </Link>
+            <Link href={"https://github.com/EugeneGohh"} isExternal>
+              GitHub
+            </Link>
+            <Link href={"https://www.instagram.com/eugenegoh.dev/"} isExternal>
+              Instagram
+            </Link>
+            <Link href={"https://www.linkedin.com/in/eugenegohh/"} isExternal>
+              LinkedIn
+            </Link>
+          </Stack>
+        </SimpleGrid>
+      </Container>
+    </Box>
   );
 }
 

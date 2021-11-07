@@ -1,12 +1,19 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import CircularProgress from "@mui/material/CircularProgress";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
-import Link from "next/link";
-import Image from "next/image";
+import {
+  CircularProgress,
+  Alert,
+  AlertTitle,
+  Stack,
+  Box,
+  Center,
+  Heading,
+  Text,
+  SimpleGrid,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { RoughNotation } from "react-rough-notation";
 
 const GET_BLOGS = gql`
   query Query($username: String!) {
@@ -64,78 +71,100 @@ function BlogSection() {
         </div>
       </div>
 
-      {data.user.publication.posts.map(
-        (blog: {
-          _id: React.Key | null | undefined;
-          coverImage: string | undefined;
-          type: string;
-          title:
-            | boolean
-            | React.ReactChild
-            | React.ReactFragment
-            | React.ReactPortal
-            | null
-            | undefined;
-          brief:
-            | boolean
-            | React.ReactChild
-            | React.ReactFragment
-            | React.ReactPortal
-            | null
-            | undefined;
-          slug: any;
-        }) => (
-          <section className="text-gray-600 body-font" key={blog._id}>
-            <div className="container px-5 py-5 mx-auto">
-              <div className="flex flex-wrap -m-4">
-                <div className="p-4 md:w-1/3">
-                  <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                    {/* Unoptimized image */}
-                    <img
-                      className="lg:h-48 md:h-36 w-full object-cover object-center"
-                      src={blog.coverImage}
-                      alt="Picture of the author"
-                    />
-                    <div className="p-6">
-                      <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                        {blog.type.toUpperCase()}
-                      </h2>
-                      <h1 className="title-font text-lg font-medium text-gray-900 mb-3 dark:text-white">
-                        {blog.title}
-                      </h1>
-                      <p className="leading-relaxed mb-3 dark:text-white">
-                        {blog.brief}
-                      </p>
-                      <div className="flex items-center flex-wrap ">
-                        <Link
-                          href={`https://eugenegoh.hashnode.dev/${blog.slug}`}
-                        >
-                          <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
-                            {" "}
-                            Learn More
-                          </a>
-                        </Link>
-                        <svg
-                          className="w-4 h-4 ml-2"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          fill="none"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M5 12h14"></path>
-                          <path d="M12 5l7 7-7 7"></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        )
-      )}
+      <SimpleGrid columns={[1, 3]} spacing={"40px"}>
+        {data.user.publication.posts.map(
+          (blog: {
+            _id: React.Key | null | undefined;
+            coverImage: string | undefined;
+            type: string;
+            title:
+              | boolean
+              | React.ReactChild
+              | React.ReactFragment
+              | React.ReactPortal
+              | null
+              | undefined;
+            brief:
+              | boolean
+              | React.ReactChild
+              | React.ReactFragment
+              | React.ReactPortal
+              | null
+              | undefined;
+            slug: any;
+          }) => (
+            <Center py={6} key={blog._id}>
+              <Box
+                maxW={"445px"}
+                w={"full"}
+                bg={useColorModeValue("white", "gray.900")}
+                boxShadow={"2xl"}
+                rounded={"md"}
+                p={6}
+                overflow={"hidden"}
+              >
+                <Stack>
+                  <Text
+                    color={"green.500"}
+                    textTransform={"uppercase"}
+                    fontWeight={800}
+                    fontSize={"sm"}
+                    letterSpacing={1.1}
+                  >
+                    Blog
+                  </Text>
+                  <Heading
+                    color={useColorModeValue("gray.700", "white")}
+                    fontSize={"2xl"}
+                    fontFamily={"body"}
+                  >
+                    <RoughNotation
+                      type="underline"
+                      color="#392F5A"
+                      show={true}
+                      multiline={false}
+                      padding={5}
+                      iterations={1}
+                      animationDuration={1500}
+                    >
+                      {blog.title}
+                    </RoughNotation>
+                  </Heading>
+                  <Text color={"gray.500"}>{blog.brief}</Text>
+                </Stack>
+                <Stack mt={6} direction={"row"} spacing={4} align={"center"}>
+                  {/* <Avatar
+                    src={"https://avatars0.githubusercontent.com/u/1164541?v=4"}
+                    alt={"Author"}
+                  /> */}
+                  <Stack direction={"column"} spacing={0} fontSize={"sm"}>
+                    <Text fontWeight={600}>Eugene Goh</Text>
+                    {/* <Text color={"gray.500"}>Feb 08, 2021 · 6min read</Text> */}
+
+                    <RoughNotation
+                      type="highlight"
+                      color="#FF9505"
+                      show={true}
+                      multiline={false}
+                      padding={[0, 3]}
+                      iterations={1}
+                      animationDuration={1500}
+                    >
+                      <a
+                        href={`https://eugenegoh.hashnode.dev/${blog.slug}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Learn More
+                      </a>
+                    </RoughNotation>
+                  </Stack>
+                </Stack>
+              </Box>
+            </Center>
+          )
+        )}
+      </SimpleGrid>
     </div>
   );
 }
