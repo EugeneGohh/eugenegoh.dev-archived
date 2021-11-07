@@ -30,7 +30,7 @@ function Hero() {
           <Heading>Hi there, I am Eugene!</Heading>
           <Text color={"gray.500"} fontSize={"lg"}>
             I love writing TypeScript/JavaScript, Next.js, Redux, GraphQL,
-            Node.js, MongoDB, and PostgreSQL . I enjoy giving back to society by
+            Node.js, MongoDB, and PostgreSQL. I enjoy giving back to society by
             contributing to open source repositories on GitHub, writing blogs &
             organizing events on Codecademy Community sharing what I have
             learned. I am also one of the early contributors behind Codecademy
