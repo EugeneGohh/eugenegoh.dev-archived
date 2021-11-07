@@ -1,17 +1,17 @@
 import "tailwindcss/tailwind.css";
 import type { AppProps } from "next/app";
-import { ThemeProvider } from "next-themes";
-
+import { ChakraProvider } from "@chakra-ui/react";
 import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
+import theme from "../theme"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute="class">
-      <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
+      <ChakraProvider theme={theme}>
         <Component {...pageProps} />
-      </ApolloProvider>
-    </ThemeProvider>
+      </ChakraProvider>
+    </ApolloProvider>
   );
 }
 export default MyApp;
